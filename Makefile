@@ -1,7 +1,7 @@
 .PHONY: build clean deploy gomodgen
 
 build: gomodgen
-	export GO111MODULE=on
+	set GO111MODULE=on
 	env GOARCH=amd64 GOOS=linux go build -ldflags="-s -w" -o bin/hello hello/main.go
 	env GOARCH=amd64 GOOS=linux go build -ldflags="-s -w" -o bin/world world/main.go
 
@@ -13,4 +13,4 @@ deploy: clean build
 
 gomodgen:
 	chmod u+x gomod.sh
-	./gomod.sh
+	bash gomod.sh
