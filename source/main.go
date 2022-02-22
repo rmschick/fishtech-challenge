@@ -35,7 +35,6 @@ type IPinformation struct {
 func Handler(request events.APIGatewayProxyRequest) (events.APIGatewayProxyResponse, error) {
 	fmt.Println("Received body: ", request.Body)
 
-
 	var userInput = request.Body
 	if checkInputForIp(userInput){
 		IPaddress := userInput	//get the IP address from userInput 
