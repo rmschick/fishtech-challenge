@@ -55,21 +55,21 @@ func Handler(request events.APIGatewayProxyRequest) (events.APIGatewayProxyRespo
 		}else{	//if the user sent a HOSTNAME
 		hostName := userInput	//get Hostname from user
 		resp, err := http.Get(hostName)	//send a http request to hostname
-		if err != nil {
+		if err != nil {			//if there was an error in getting the http response, send error
 			log.Fatalln(err)
 			return events.APIGatewayProxyResponse{Body: err.Error(), StatusCode: 400}, nil
 		}
 
-		body, err := ioutil.ReadAll(resp.Body)
-		if err != nil {
+		body, err := ioutil.ReadAll(resp.Body)	//read the body of the http response
+		if err != nil {		//if there was an error, send error to user
 			log.Fatalln(err)
 			return events.APIGatewayProxyResponse{Body: err.Error(), StatusCode: 400}, nil
 		}
 
-		sb := string(body)
+		sb := string(body)	//convert json to string
 		log.Printf(sb)
 
-		return events.APIGatewayProxyResponse{Body: sb, StatusCode: 200}, nil	
+		return events.APIGatewayProxyResponse{Body: sb, StatusCode: 200}, nil	//send response to user
 	}
 }
 	
