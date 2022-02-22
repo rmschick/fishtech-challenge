@@ -26,7 +26,7 @@ locals {
 
 data "archive_file" "lambda_zip" {
   type        = "zip"
-  source_file = "../bin/ipaddress"
+  source_file = "../source/bin/ipaddress"
   output_path = "bin/ipaddress.zip"
 }
 

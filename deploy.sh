@@ -9,7 +9,7 @@ rm -rf ./bin
 echo "+++++ build go packages +++++"
 
 cd source/
-env GOARCH=amd64 GOOS=linux go build -ldflags="-s -w" -o bin/ipaddress main.go
+env GOARCH=amd64 GOOS=linux go build -ldflags="-s -w" -o main.go
 cd ..
 
 echo "+++++ ipaddress module +++++"

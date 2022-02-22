@@ -57,13 +57,15 @@ func Handler(request events.APIGatewayProxyRequest) (events.APIGatewayProxyRespo
 		resp, err := http.Get(hostName)	//send a http request to hostname
 		if err != nil {			//if there was an error in getting the http response, send error
 			log.Fatalln(err)
-			return events.APIGatewayProxyResponse{Body: err.Error(), StatusCode: 400}, nil
+			errorNotValidInput := "Error: not valid input or could not grab information from domain. \nPlease utilize IPv4, IPv6 or a valid url to get information."
+			return events.APIGatewayProxyResponse{Body: errorNotValidInput, StatusCode: 400}, nil
 		}
 
 		body, err := ioutil.ReadAll(resp.Body)	//read the body of the http response
 		if err != nil {		//if there was an error, send error to user
 			log.Fatalln(err)
-			return events.APIGatewayProxyResponse{Body: err.Error(), StatusCode: 400}, nil
+			errorNothingToRead := "Error: could not read information from url"
+			return events.APIGatewayProxyResponse{Body: errorNothingToRead, StatusCode: 400}, nil
 		}
 
 		sb := string(body)	//convert json to string
