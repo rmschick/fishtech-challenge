@@ -21,6 +21,8 @@ This is my first project utilizing Go, Serverless, Terraform. The only service I
         npm v8.5.1   
 
         serverless Framework Core: 3.2.1  Plugin: 6.1.0   SDK: 4.3.1
+
+        Terraform 1.1.6
         
  **Installation**
  
@@ -52,3 +54,7 @@ This is my first project utilizing Go, Serverless, Terraform. The only service I
                 http://www.Wikia.com
                 http://www.Example.com
 
+
+
+
+https://s1cq7a8l4e.execute-api.us-east-1.amazonaws.com/ipaddress
