@@ -1,4 +1,6 @@
 # CYDERES-challenge
+
+**February 20, 2022**
 Using Golang, I'm creating a simple API that is deployed as a serverless function on a cloud platform.
 
 
@@ -10,9 +12,9 @@ This is my first project utilizing Go, Serverless, Terraform. The only service I
 
         Organization: Organizing the repository and file directories to have a more clean and readable project
         Testing: I have only utilized automated testing once with NodeJS, couple with learning Go, Go API's, serverless, and Terraform I was unable to achieve testing. 
-        Experience: It is difficult to approach a problem with no experience in any of the tools required to solve it. 
+        Experience: It is difficult to approach a problem with no experience in any of the tools required to solve it. So researching every step within the timeframe was                               challenging, yet rewarding to learn as much as I did.
 
-        Overall I'm happy with my implementation and am looking forward to building on top of the foundation this project has laid out for me.
+Overall I'm happy with my implementation and am looking forward to building on top of the foundation this project has laid out for me.
 
 **Starting with the environment**
 
@@ -25,14 +27,13 @@ This is my first project utilizing Go, Serverless, Terraform. The only service I
         Terraform 1.1.6
         
  **Installation**
- 
-        npm install
 
         chmod +x ./deploy.sh
 
         chmod +x ./destroy.sh
 
 **Usage**
+       
         To deploy run sh deploy.sh
 
         To destory run sh destroy.sh
