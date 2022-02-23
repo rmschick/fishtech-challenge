@@ -53,8 +53,3 @@ This is my first project utilizing Go, Serverless, Terraform. The only service I
                 http://www.testingmcafeesites.com/index.html
                 http://www.Wikia.com
                 http://www.Example.com
-
-
-
-
-https://s1cq7a8l4e.execute-api.us-east-1.amazonaws.com/ipaddress

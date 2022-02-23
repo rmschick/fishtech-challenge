@@ -8,6 +8,8 @@ rm -rf ./bin
 
 echo "+++++ build go packages +++++"
 
+npm install
+
 cd source/
 env GOARCH=amd64 GOOS=linux go build -ldflags="-s -w" -o main.go
 cd ..
