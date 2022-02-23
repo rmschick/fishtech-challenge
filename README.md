@@ -8,7 +8,7 @@ Started with: 'sls create --template aws-go-mod --path myService' which created 
 
 This is my first project utilizing Go, Serverless, Terraform. The only service I was familiar with was AWS Lambda. Coming from Frontend Engineering, I believe I could have done things better:
 
-        Organization: Orgraning the repository and file directories to have a more clean and readable project
+        Organization: Organizing the repository and file directories to have a more clean and readable project
         Testing: I have only utilized automated testing once with NodeJS, couple with learning Go, Go API's, serverless, and Terraform I was unable to achieve testing. 
         Experience: It is difficult to approach a problem with no experience in any of the tools required to solve it. 
 
@@ -56,5 +56,3 @@ This is my first project utilizing Go, Serverless, Terraform. The only service I
 
 
 
-
-https://s1cq7a8l4e.execute-api.us-east-1.amazonaws.com/ipaddress
