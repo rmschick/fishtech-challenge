@@ -22,7 +22,7 @@ provider:
 
 package:
   patterns:
-    - '!./**'
+    - '!./source/**'
     - ./bin/**
 
 functions:
