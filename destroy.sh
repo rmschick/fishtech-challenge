@@ -2,8 +2,6 @@
 
 echo -e "----- Starting deletion -----\n"
 
-tfswitch 1.0.0
-
 echo -e "Deleting with Terraform...\n"
 
 cd infrastructure

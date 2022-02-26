@@ -2,13 +2,9 @@
 
 echo -e "\n+++++ Starting deployment +++++\n"
 
-tfswitch 1.0.0
-
 rm -rf ./bin
 
 echo "+++++ build go packages +++++"
-
-npm install
 
 cd source/
 env GOARCH=amd64 GOOS=linux go build -ldflags="-s -w" -o main.go
