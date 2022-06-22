@@ -1,12 +1,3 @@
-# Serverless directories
-.serverless
-
-# golang output binary directory
-bin
-
-# golang vendor (dependencies) directory
-vendor
-
 # Binaries for programs and plugins
 *.exe
 *.exe~
@@ -14,8 +5,33 @@ vendor
 *.so
 *.dylib
 
-# Test binary, build with `go test -c`
+# Test binary, built with `go test -c`
 *.test
 
 # Output of the go coverage tool, specifically when used with LiteIDE
 *.out
+
+# IDEs
+.idea/
+.intellij/
+.vscode/
+
+# Others
+dist/
+docs/site/
+site/
+static/
+coverage.html
+coverage.txt
+*.log
+*.iml
+
+# BEGONE DS_STORE
+.DS_Store
+
+# testing configuration
+configuration.yaml
+
+# CI/CD Ignore
+.cicd/
+lint-junit.xml
