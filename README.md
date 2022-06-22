@@ -22,9 +22,7 @@ Overall I'm happy with my implementation and am looking forward to building on t
         
 ## Installation
 
-`chmod +x ./deploy.sh`
-
-`chmod +x ./destroy.sh`
+`chmod +x ./deploy.sh && chmod +x ./destroy.sh`
 
 ## Usage
 To deploy run `sh deploy.sh`
@@ -34,6 +32,8 @@ To destory run `sh destroy.sh`
 ## Testing
         
 I've been using [Insomnia](https://insomnia.rest/) to POST valid IPv4, IPv6, and URL's to my endpoint to get information back. 
+
+Endpoint: https://s1cq7a8l4e.execute-api.us-east-1.amazonaws.com/ipaddress
 
 Some of the tests I used:
 ```yaml

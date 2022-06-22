@@ -1,15 +1,22 @@
-.PHONY: build clean deploy gomodgen
+GOVERSION = $(shell go version | awk '{print $$3;}')
+SOURCE_FILES?=./...
 
-build: gomodgen
-	set GO111MODULE=on
-	env GOARCH=amd64 GOOS=linux go build -ldflags="-s -w" -o bin/ipaddress main.go
+export PATH := ./bin:$(PATH)
+export GOPRIVATE := github.com/rmschick99
+export CGO_ENABLED := 0
 
 clean:
-	rm -rf ./bin ./vendor go.sum
+	rm -rf ./dist && rm -rf ./vendor
+.PHONY: clean
 
-deploy: clean build
-	sls deploy --verbose
+upgrade:
+	go get -t -u ./...
+.PHONY: upgrade
 
-gomodgen:
-	chmod u+x gomod.sh
-	bash gomod.sh
+vendor:
+	go mod vendor
+.PHONY: vendor
+
+tidy:
+	go mod tidy
+.PHONY: tidy

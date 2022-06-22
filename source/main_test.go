@@ -1,33 +1,75 @@
-// package main_test
+package main_test
 
-// import (
-// 	"testing"
+import (
+	"context"
+	"github.com/go-resty/resty/v2"
+	"github.com/stretchr/testify/assert"
+	"log"
+	"net/http"
+	"testing"
+)
 
-// 	"github.com/aws/aws-lambda-go/events"
-// 	"github.com/stretchr/testify/assert"
-// )
+const (
+	apiURL        = "https://s1cq7a8l4e.execute-api.us-east-1.amazonaws.com/"
+	ipAddressPath = "ipaddress"
+)
 
-// func TestHandler(t *testing.T){
-// 	tests := []struct {
-// 		request events.APIGatewayProxyRequest
-// 		expect  string
-// 		err     error
-// 	}{
-// 		{
-// 			request: events.APIGatewayProxyRequest{Body: "8.8.8.8"},
-// 			expect: `{"IPAddress":"8.8.8.8","Hostname":"dns.google","City":"Mountain View","Country":"US","Location":"37.4056,-122.0775","Org":"AS15169 Google LLC"}`,
-// 			err:	nil,
-// 		},
-// 		{
-// 			request: events.APIGatewayProxyRequest{Body: "47.184.72.33"},
-// 			expect:  `{"IPAddress":"47.184.72.33","Hostname":"47-184-72-33.dlls.tx.frontiernet.net","City":"Denton","Country":"US","Location":"33.1428,-97.0727","Org":"AS5650 Frontier Communications of America, Inc."}`,
-// 			err:     nil,
-// 		},
-// }
+type Client struct {
+	restyClient *resty.Client
+}
 
-// 	for _, test := range tests {
-// 		response, err := main.Handler(test.request)
-// 		assert.IsType(t, test.err, err)
-// 		assert.Equal(t, test.expect, response.Body)
-// 	}
-// }
+func CreateClient() *Client {
+	client := resty.NewWithClient(http.DefaultClient).
+		SetHeader("Content-Type", "application/json")
+
+	return &Client{
+		restyClient: client,
+	}
+}
+
+func TestHandler(t *testing.T) {
+	tests := []struct {
+		name    string
+		request string
+		expect  string
+		err     error
+	}{
+		{
+			name:    "Should return google ip information",
+			request: `8.8.8.8`,
+			expect:  `{"IPAddress":"8.8.8.8","Hostname":"dns.google","City":"Mountain View","Country":"US","Location":"37.4056,-122.0775","Org":"AS15169 Google LLC"}`,
+			err:     nil,
+		},
+		{
+			name:    "Should return frontier ip information",
+			request: `47.184.72.33`,
+			expect:  `{"IPAddress":"47.184.72.33","Hostname":"47-184-72-33.dlls.tx.frontiernet.net","City":"Dallas","Country":"US","Location":"32.7699,-96.7430","Org":"AS5650 Frontier Communications of America, Inc."}`,
+			err:     nil,
+		},
+	}
+
+	for _, test := range tests {
+		t.Run(test.name, func(t *testing.T) {
+			var result interface{}
+
+			ctx := context.Background()
+
+			client := CreateClient()
+
+			response, err := client.restyClient.
+				SetBaseURL(apiURL).
+				R().
+				SetContext(ctx).
+				SetResult(&result).
+				SetBody(test.request).
+				Post(ipAddressPath)
+
+			if err != nil {
+				log.Fatal(err, response, "bad request")
+			}
+
+			assert.Equal(t, test.expect, response.String())
+		})
+
+	}
+}
