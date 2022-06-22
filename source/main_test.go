@@ -46,6 +46,12 @@ func TestHandler(t *testing.T) {
 			expect:  `{"IPAddress":"47.184.72.33","Hostname":"47-184-72-33.dlls.tx.frontiernet.net","City":"Dallas","Country":"US","Location":"32.7699,-96.7430","Org":"AS5650 Frontier Communications of America, Inc."}`,
 			err:     nil,
 		},
+		{
+			name:    "Should return frontier ip information",
+			request: `47.184.72.33`,
+			expect:  `{"IPAddress":"47.184.72.33","Hostname":"47-184-72-33.dlls.tx.frontiernet.net","City":"Dallas","Country":"US","Location":"32.7699,-96.7430","Org":"AS5650 Frontier Communications of America, Inc."}`,
+			err:     nil,
+		},
 	}
 
 	for _, test := range tests {
